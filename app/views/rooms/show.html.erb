@@ -1,0 +1,53 @@
+<div class="container room-show">
+  <div class="show-contents">
+    <%= image_tag @room.room_image.url %>
+    <div class="room-show-detail>
+      <div class="room-show-detail-icon">
+        <%= link_to root_path do %>
+          <%= image_tag 'default_icon.jpeg', :alt => 'アイコン' %>
+        <% end %>
+        
+        <div class="room-show-profile">
+          <p class="room-show-profile-name">
+            <%= @room.room_name%>
+          </p>
+          <p class="room-show-profile-address">
+            <%= @room.room_address %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="room-show-detail-introduction">
+      <%= @room.room_introduction %>
+    </p>
+
+    <div class="room-show-nav">
+      <h5 class="price-icon">
+      ￥ <%= @room.room_price %> / 日
+      </h5>
+      
+      <div class="room-show-date-select">
+        <%= form_with url: reservations_confirm_path do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+
+          <%= f.label :room_id, "部屋ID" %>
+          <%= f.text_field :room_id, value:@room.id %>
+
+          <%= f.label :reservation_start, "開始日" %>
+          <%= f.date_field :reservation_start %>
+
+          <%= f.label :reservation_end, "終了日" %>
+          <%= f.date_field :reservation_end %>
+
+          <%= f.label :reservation_people, "人数" %>
+          <%= f.number_field :reservation_people %>
+
+          <%= f.submit"予約する" %>
+
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

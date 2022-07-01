@@ -1,0 +1,31 @@
+<div class="container reservation-new">
+  <div class="reservations-new-nav">
+    <h4 class="reservations-new-check-content">予約内容確認</h4>
+    <h5 class="price-icon">
+      ¥ <%= @price %> / 日
+    </h5>
+    <div class="reservations-new-date-select">
+        <%= form_with model: @reservation do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+
+            <%= f.label :room_id, "部屋ID" %>
+            <%= f.text_field :room_id, value:@room.id %>
+
+            <%= f.label :reservation_start, "開始日" %>
+            <%= f.date_field :reservation_start, value:@reservation.reservation_start %>
+
+            <%= f.label :reservation_end, "終了日" %>
+            <%= f.date_field :reservation_end, value:@reservation.reservation_end %>
+
+            <h6>使用日数：<%= @days %>日</h6>
+            <h6>人数：<%= @reservation.reservation_people %>人</h6>
+
+            <%= f.label :reservation_price, "合計金額" %>
+            <%= f.text_field :reservation_price, value:@price %>
+
+            <%= f.submit"予約を確定" %>
+            <%= link_to "ルーム詳細に戻る", room_path(:id) %>
+        <% end %>
+    </div>
+  </div>
+</div>

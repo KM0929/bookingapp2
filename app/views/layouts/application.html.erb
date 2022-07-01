@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookingapp2</title>
+    <title>Bookingapp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,50 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left-nav">
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.png', :alt => 'Pote Shere' %>
+            <% end %>
+        </div>
+        <div class="header-right-nav">
+          <div class="nav-name">
+            <% if user_signed_in? %>
+              <%= current_user.user_name %>
+            <% end %>
+          </div>
+          <ul class="header-nav-menu">
+            <li>
+              <%= link_to "ルーム登録", new_room_path %>
+            </li>
+            <li>
+              <%= link_to "予約済みルーム一覧", rooms_index_path %>
+              <!-- リンク更新 -->
+            </li>
+            <li>
+              <%= link_to "登録済みルーム一覧", rooms_index_path %>
+              <!-- リンク更新 -->
+            </li>
+            <li>
+              <%= link_to "設定", edit_user_registration_path %>
+              <!-- リンク更新 -->
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <body>
+      <%= yield %>
+    </body>
+
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
+
   </body>
 </html>

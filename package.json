@@ -1,5 +1,5 @@
 {
-  "name": "bookingapp2",
+  "name": "bookingapp",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

@@ -1,0 +1,55 @@
+<div class="room-nav">
+  <ul>
+    <li>
+      <%= link_to "基本情報", new_room_path %>
+    </li>
+  </ul>
+</div>
+
+<div class="room-view">
+  <div class="update-content">
+    <div class="room-view-box">
+      <div class="row">
+        <h5>ルーム情報登録</h5>
+      </div>
+    </div>
+  </div>
+  <div class="update-content">
+    <%= form_with model: @room do |f| %>
+      <table>
+        <tr>
+          <th><%= f.label :room_name ,"ルーム名" %></th>
+          <td><%= f.text_field :room_name %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :room_introduction ,"ルーム紹介" %></th>
+          <td><%= f.text_area :room_introduction %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :room_price ,"料金" %></th>
+          <td><%= f.text_field :room_price %></td>
+        </tr>
+
+        <tr>
+        <th><%= f.label :room_address ,"住所" %></th>
+        <td><%= f.text_area :room_address %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :room_image ,"ルーム画像" %></th>
+          <td><%= f.file_field :room_image %></td>
+        </tr>
+
+        <tr>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        </tr>
+      </table>
+        
+      <div>
+        <%= f.submit "登録完了する"%>
+      </div>
+    <% end %>
+  </div>
+</div>
