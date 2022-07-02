@@ -13,6 +13,8 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(params.require(:reservation).permit(:reservation_start, :reservation_end, :reservation_price, :reservation_people, :room_id, :user_id))
+    binding.pry
+    @room = Room.find(params[:id])
     if @reservation.save
       redirect_to @reservation
     else

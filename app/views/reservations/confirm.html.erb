@@ -8,8 +8,7 @@
         <%= form_with model: @reservation do |f| %>
             <%= f.hidden_field :user_id, value: current_user.id %>
 
-            <%= f.label :room_id, "部屋ID" %>
-            <%= f.hidden_field :room_id %>
+            <%= f.hidden_field :room_id, value: @room.id %>
 
             <%= f.label :reservation_start, "開始日" %>
             <%= f.date_field :reservation_start, value:@reservation.reservation_start %>
