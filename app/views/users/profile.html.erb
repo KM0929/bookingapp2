@@ -1,0 +1,56 @@
+<div class="row user-row">
+  <div class="user-nav-menu">
+    <div class="user-nav user-nav-pc">
+        <ul>
+        <li>
+            <%= link_to "アカウント", user_account_path %>
+        </li>
+        <li class="active">
+            <%= link_to "プロフィール", user_profile_path %>
+        </li>
+        </ul>
+    </div>
+    <div class="user-nav user-nav-mobile">
+        <ul>
+        <li>
+            <%= link_to "アカウント", user_account_path %>
+        </li>
+        <li class="active">
+            <%= link_to "プロフィール", user_profile_path %>
+        </li>
+        </ul>
+    </div>
+  </div>
+  <div class="user-view">
+    <div class="user-view-box update-content">
+      <h5 class="title">プロフィール</h5>
+      <div class="icon-box">
+        <%= image_tag @user.user_image.url, class: "user-image" %>
+      </div>
+      <%= form_with model: @user, url: { controller: "users", action: "update" } do |f| %>
+        <table>
+            <tr>
+                <th><%= f.label :user_image, "アイコン画像" %></th>
+                <td class="user-image-upload"><%= f.file_field :user_image %></td>
+            </tr>
+
+            <tr>
+                <th><%= f.label :user_name, "名前" %></th>
+                <td><%= f.text_field :user_name, class: "input-area" %></td>
+            </tr>
+
+            <tr>
+                <th><%= f.label :user_introduction ,"自己紹介" %></th>
+                <td><%= f.text_area :user_introduction, class: "input-area" %></td>
+            </tr>
+        </table>
+        
+        <div>
+        <%= f.submit "更新", class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

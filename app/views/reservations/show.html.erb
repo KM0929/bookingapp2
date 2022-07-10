@@ -1,0 +1,34 @@
+<div class="user-view-box">
+    <div class="update-content">
+      <div class="row">
+        <label for="room">予約した部屋</label>
+        <div class="update-contant-detail">
+          <%= link_to(@room.room_name, @room, {class: "update-room"}) %>
+        </div>
+      </div>
+    </div>
+    <div class="update-content">
+      <div class="row">
+        <label for="reservation_start">開始日</label>
+        <div class="update-content-detail">
+          <%= @reservation.reservation_start %>
+        </div>
+      </div>
+    </div>
+    <div class="update-content">
+      <div class="row">
+        <label for="room">終了日</label>
+        <div class="update-content-detail">
+          <%= @reservation.reservation_end %>
+        </div>
+      </div>
+    </div>
+    <div class="update-content">
+      <div class="row">
+        <label for="room">価格</label>
+        <div class="update-content-detail">
+          <%= @reservation.reservation_price %>円
+        </div>
+      </div>
+    </div>
+</div>

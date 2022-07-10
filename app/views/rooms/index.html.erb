@@ -1,0 +1,27 @@
+<div class="container-field rooms">
+  <h4>登録済みルーム一覧</h4>
+  <table class="rooms">
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>料金</th>
+        <th>作成時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |room| %>
+        <% if room.user_id == current_user.id %>
+          <tr>
+            <td><%= link_to (image_tag room.room_image.url, :size => '240x140'), room_path(room.id) %></td>
+            <td class="posts-name"><%= link_to room.room_name, room_path(room.id) %></td>
+            <td class="posts-contents"><%= room.room_introduction %></td>
+            <td>¥ <%= room.room_price %></td>
+            <td><%= room.created_at %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
