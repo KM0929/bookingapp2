@@ -1,3 +1,164 @@
-// Place all the styles related to the reservations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+/* 共通・indexビュー */
+tr {
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+}
+
+th {
+    padding: 8px 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: inherit;
+    box-sizing: border-box;
+}
+
+td {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8f8f8;
+}
+
+.posts-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #909090;
+}
+
+.posts-content {
+    max-width: 400px;
+}
+
+/* confirmビュー */
+
+.reservation-new {
+    padding: 30px;
+}
+
+@media  (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+@media  (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    } 
+}
+
+@media  (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    } 
+}
+ 
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.reservations-new-nav {
+    padding: 20px;
+    border: 1px solid #eaedef;
+}
+
+h4 {
+    margin-top: 0;
+    font-weight: 500;
+}
+
+.reservations-new-check-content {
+    border-bottom: 1px solid #eaedef;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 00.5rem;
+}
+
+.reservations-new-date-select {
+    padding: 15px 0;
+}
+
+.reservations-new-date-select input {
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: calc(1,5em +0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    background-clip: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.reservations-new-date-select input[readonly] {
+    border-color: #e9ecef;
+    background-color: #e9ecef;
+    color: black;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+h6 {
+    margin-top: 0.5rem;
+    font-size: 1.0rem;
+    font-weight: 500;
+}
+
+.reservations-new-date-select a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    height: calc(1,5em +0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    background-clip: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+/* showビュー */
+
+.update-content label {
+    font-weight: bold;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.update-content-detail {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+

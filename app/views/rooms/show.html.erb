@@ -1,51 +1,70 @@
 <div class="container room-show">
-  <div class="show-contents">
-    <%= image_tag @room.room_image.url %>
-    <div class="room-show-detail>
-      <div class="room-show-detail-icon">
-        <%= link_to root_path do %>
-          <%= image_tag 'default_icon.jpeg', :alt => 'アイコン' %>
-        <% end %>
-        
+  <div class="row">
+    <div class="room-show-detail">
+      <%= image_tag @room.room_image.url, class: "room-image" %>
+      <div class="room-show-detail-content">
+        <div class="room-show-detail-icon">
+          <%= link_to root_path do %>
+            <%= image_tag @room.user.user_image.url, :alt => 'アイコン', class: "host-icon" %>
+          <% end %>
+        </div>
         <div class="room-show-profile">
           <p class="room-show-profile-name">
-            <%= @room.room_name%>
+            <%= @room.room_name %>
           </p>
           <p class="room-show-profile-address">
             <%= @room.room_address %>
           </p>
         </div>
       </div>
-    </div>
 
-    <p class="room-show-detail-introduction">
-      <%= @room.room_introduction %>
-    </p>
+      <p class="room-show-detail-introduction">
+        <%= @room.room_introduction %>
+      </p>
+    </div>
 
     <div class="room-show-nav">
       <h5 class="price-icon">
       ￥ <%= @room.room_price %> / 日
       </h5>
       
-      <div class="room-show-date-select">
-        <%= form_with url: reservations_confirm_path do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
+      <% if user_signed_in? %> 
+        <div class="room-show-date-select">
+          <%= form_with url: reservations_confirm_path do |f| %>
 
-          <%= f.label :room_id, "部屋ID" %>
-          <%= f.text_field :room_id, value:@room.id %>
+            <%= f.hidden_field :room_id, value: @room.id %>
 
-          <%= f.label :reservation_start, "開始日" %>
-          <%= f.date_field :reservation_start %>
+            <%= f.label :reservation_start, "開始日" %>
+            <%= f.date_field :reservation_start, class: "input-area" %>
 
-          <%= f.label :reservation_end, "終了日" %>
-          <%= f.date_field :reservation_end %>
+            <%= f.label :reservation_end, "終了日" %>
+            <%= f.date_field :reservation_end, class: "input-area" %>
 
-          <%= f.label :reservation_people, "人数" %>
-          <%= f.number_field :reservation_people %>
+            <%= f.label :reservation_people, "人数" %>
+            <%= f.number_field :reservation_people, class: "input-area" %>
 
-          <%= f.submit"予約する" %>
+            <%= f.submit"予約する", class: "btn room-reservation-submit" %>
 
+          <% end %>
+        <% else %>
+          <%= form_with url: reservations_confirm_path do |f| %>
+
+            <%= f.hidden_field :room_id, value: @room.id %>
+
+            <%= f.label :reservation_start, "開始日" %>
+            <%= f.date_field :reservation_start, class: "input-area" %>
+
+            <%= f.label :reservation_end, "終了日" %>
+            <%= f.date_field :reservation_end, class: "input-area" %>
+
+            <%= f.label :reservation_people, "人数" %>
+            <%= f.number_field :reservation_people, class: "input-area" %>
+
+            <%= link_to "ログイン", user_session_path, class: "btn room-login-btn" %>
+          <% end %>
         <% end %>
+
+
       </div>
     </div>
 

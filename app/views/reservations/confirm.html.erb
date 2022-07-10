@@ -10,20 +10,22 @@
 
             <%= f.hidden_field :room_id, value: @room.id %>
 
+            <%= f.hidden_field :reservation_people, value: @reservation.reservation_people %>
+
             <%= f.label :reservation_start, "開始日" %>
-            <%= f.date_field :reservation_start, value:@reservation.reservation_start %>
+            <%= f.date_field :reservation_start, value:@reservation.reservation_start ,readonly: true %>
 
             <%= f.label :reservation_end, "終了日" %>
-            <%= f.date_field :reservation_end, value:@reservation.reservation_end %>
+            <%= f.date_field :reservation_end, value:@reservation.reservation_end ,readonly: true %>
 
-            <h6>使用日数：<%= @days %>日</h6>
-            <h6>人数：<%= @reservation.reservation_people %>人</h6>
+            <h6 class="reservations-new-check-content">使用日数：<%= @days %>日</h6>
+            <h6 class="reservations-new-check-content">人数：<%= @reservation.reservation_people %>人</h6>
 
             <%= f.label :reservation_price, "合計金額" %>
-            <%= f.text_field :reservation_price, value:@price %>
+            <%= f.text_field :reservation_price, value:@price ,readonly: true %>
 
             <%= f.submit"予約を確定" %>
-            <%= link_to "ルーム詳細に戻る", room_path(:id) %>
+            <%= link_to "ルーム詳細に戻る", controller: 'rooms', action: 'show', id: @reservation.room.id %>
         <% end %>
     </div>
   </div>

@@ -1,55 +1,65 @@
-<div class="room-nav">
-  <ul>
-    <li>
-      <%= link_to "基本情報", new_room_path %>
-    </li>
-  </ul>
-</div>
+<div class="row room-nav-menu">
+  <div class="room-nav room-nav-pc">
+    <ul>
+      <li class="active">
+        <%= link_to "基本情報", new_room_path %>
+      </li>
+    </ul>
+  </div>
+  <div class="room-nav room-nav-mobile">
+    <ul>
+      <li class="active">
+        <%= link_to "基本情報", new_room_path %>
+      </li>
+    </ul>
+  </div>
 
-<div class="room-view">
-  <div class="update-content">
-    <div class="room-view-box">
-      <div class="row">
-        <h5>ルーム情報登録</h5>
+
+  <div class="room-view">
+    <div class="update-content">
+      <div class="room-view-box">
+        <div class="row">
+          <h5>ルーム情報登録</h5>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="update-content">
-    <%= form_with model: @room do |f| %>
-      <table>
-        <tr>
-          <th><%= f.label :room_name ,"ルーム名" %></th>
-          <td><%= f.text_field :room_name %></td>
-        </tr>
+    <div class="update-content">
+      <%= form_with(model: @room, local: true) do |f| %>
+        <table>
+          <tr>
+            <th><%= f.label :room_name ,"ルーム名", class: "required" %></th>
+            <td><%= f.text_field :room_name, class: "input-area" %></td>
+          </tr>
 
-        <tr>
-          <th><%= f.label :room_introduction ,"ルーム紹介" %></th>
-          <td><%= f.text_area :room_introduction %></td>
-        </tr>
+          <tr>
+            <th><%= f.label :room_introduction ,"ルーム紹介", class: "required" %></th>
+            <td><%= f.text_area :room_introduction, class: "input-area" %></td>
+          </tr>
 
-        <tr>
-          <th><%= f.label :room_price ,"料金" %></th>
-          <td><%= f.text_field :room_price %></td>
-        </tr>
+          <tr>
+            <th><%= f.label :room_price ,"料金", class: "required" %></th>
+            <td><%= f.text_field :room_price, class: "input-area" %></td>
+          </tr>
 
-        <tr>
-        <th><%= f.label :room_address ,"住所" %></th>
-        <td><%= f.text_area :room_address %></td>
-        </tr>
+          <tr>
+          <th><%= f.label :room_address ,"住所", class: "required" %></th>
+          <td><%= f.text_area :room_address, class: "input-area" %></td>
+          </tr>
 
-        <tr>
-          <th><%= f.label :room_image ,"ルーム画像" %></th>
-          <td><%= f.file_field :room_image %></td>
-        </tr>
+          <tr>
+            <th><%= f.label :room_image ,"ルーム画像", class: "required" %></th>
+            <td><%= f.file_field :room_image, class: "room-image" %></td>
+          </tr>
 
-        <tr>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-        </tr>
-      </table>
-        
-      <div>
-        <%= f.submit "登録完了する"%>
-      </div>
-    <% end %>
+          <tr>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          </tr>
+        </table>
+          
+        <div>
+          <%= f.submit "登録", class: "btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

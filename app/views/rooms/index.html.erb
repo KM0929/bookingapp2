@@ -1,23 +1,27 @@
-<h1>Rooms#index</h1>
-
-<h1>ルーム一覧</h1>
-
-<div class="room-frame-inner">
-  <% @rooms.each do |room| %>
-    <div class="room-profile">
-      <p class="room-profile-name">
-      <%= room.room_name %>
-      <p>
-      <p class="room-profile-city">
-      <%= room.room_address %>
-      <p>
-      <p class="room-profile-price">
-      <%= room.room_price %>
-      <p>
-    </div>
-
-    <div class="room-image-out">
-      <%= image_tag room.room_image.url %>
-    </div>
-  <% end %>
+<div class="container-field rooms">
+  <h4>登録済みルーム一覧</h4>
+  <table class="rooms">
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>料金</th>
+        <th>作成時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |room| %>
+        <% if room.user_id == current_user.id %>
+          <tr>
+            <td><%= link_to (image_tag room.room_image.url, :size => '240x140'), room_path(room.id) %></td>
+            <td class="posts-name"><%= link_to room.room_name, room_path(room.id) %></td>
+            <td class="posts-contents"><%= room.room_introduction %></td>
+            <td>¥ <%= room.room_price %></td>
+            <td><%= room.created_at %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>

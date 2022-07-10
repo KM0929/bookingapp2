@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>Bookingapp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,36 +16,67 @@
             <%= link_to root_path do %>
               <%= image_tag 'logo.png', :alt => 'Pote Shere' %>
             <% end %>
-        </div>
-        <div class="header-right-nav">
-          <div class="nav-name">
-            <% if user_signed_in? %>
-              <%= current_user.user_name %>
+            <%= form_with url: search_rooms_path, method: :get do |f| %>
+              <%= f.text_field :room_address, class: "header-input", placeholder: "エリア" %>
+              <i class="fa-solid fa-location-dot"></i>
+              <%= f.text_field :keyword, class: "header-input", placeholder: "キーワード" %>
+              <%= f.submit :search, class: "hidden-btn" %>
             <% end %>
-          </div>
-          <ul class="header-nav-menu">
+        </div>
+
+        <div class="header-right-nav">
+          <% if user_signed_in? %>
+            <div class="user-signed-in">
+              <div class="user-name">
+                <%= current_user.user_name %>
+              </div>
+              <div>
+                <% if current_user.user_image.blank? %>
+                  <%= image_tag 'default_icon.jpeg', class: "user-image" %>
+                <% else %>
+                  <%= image_tag current_user.user_image.url, class: "user-image" %>
+                <% end %>
+              </div>
+            </div>
+
+           <ul class="header-nav-menu hidden">
             <li>
               <%= link_to "ルーム登録", new_room_path %>
             </li>
             <li>
-              <%= link_to "予約済みルーム一覧", rooms_index_path %>
-              <!-- リンク更新 -->
+              <%= link_to "予約済みルーム一覧", reservations_index_path %>
             </li>
             <li>
               <%= link_to "登録済みルーム一覧", rooms_index_path %>
-              <!-- リンク更新 -->
             </li>
             <li>
-              <%= link_to "設定", edit_user_registration_path %>
-              <!-- リンク更新 -->
+            <%= link_to "設定", user_account_path(current_user.id) %>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path %>
             </li>
           </ul>
+         <% else %>
+           <div class="nav-item">
+             <%= link_to "ログイン", user_session_path, class: "btn login-btn" %>
+             <%= link_to "登録する", new_user_registration_path, class: "btn signup-btn" %>
+           </div>
+         <% end %>
         </div>
       </div>
     </header>
+
+    <div class="notice-message">
+      <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
+
+    <div class="alert-message">
+    <% if flash[:alert] %>
+      <p class="alert"><%= flash[:alert] %></p>
+    <% end %>
+  </div>
 
     <body>
       <%= yield %>
