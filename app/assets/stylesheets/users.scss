@@ -1,0 +1,186 @@
+/*ログイン・登録画面*/
+.devise-container {
+    width: 100%;
+    padding: 30px 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.devise-frame {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: 24px;
+    margin: 0px auto;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.devise-frame p {
+    font-size: 16px;
+}
+
+.devise-frame a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: transparent;
+}
+
+.devise-inner {
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+}
+
+.user-input-area {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.user-btn {
+    width: 100%;
+    margin: 0;
+}
+
+.user-btn-edit {
+    width: 100px;
+}
+
+/*accountビュー*/
+
+.user-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    background-color: #fff;
+}
+
+.user-nav li {
+    padding: 10px 20px;
+}
+
+.user-nav-pc {
+    height: 100vh;
+}
+
+.user-nav a {
+    text-decoration: none;
+}
+
+@media screen and (max-width:991px) {
+    .user-row {
+        display: block;
+    }
+
+    .user-nav-menu {
+        display: block;
+        width: 100%;
+    }
+    .user-nav-pc {
+        display: none;
+    }
+
+    .user-nav-mobile {
+        display: block;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .user-nav-mobile ul{
+        margin: 0;
+    }
+
+    .user-nav-mobile li {
+        float: left;
+    }
+
+    .active {
+        width: fit-content;
+        border-bottom: 3px solid #4a90e2;
+        margin-left: 15px;
+    }
+
+    .user-view-box {
+        margin: 30px;
+        box-sizing: border-box;
+        max-width: 900px;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .user-nav {
+        height: 100vh;
+    }
+
+    .user-nav-menu {
+        display: block;
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+
+    .user-nav-mobile {
+        display: none;
+    }
+
+    .user-view {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+        margin-top: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .active {
+        border-right: 3px solid #4a90e2;
+    }
+
+    .user-view-box {
+        margin: 100%;
+        margin: 0 auto;
+    }
+}
+
+.title {
+    margin: 15px 0;
+}
+
+/*editビュー*/
+.edit-btn {
+    width: 100%;
+    margin: 15px 0 0 0;
+}
+
+.edit-btn-back {
+    color: #6c757d;
+    border-color: #6c757d;
+    margin: 0;
+}
+
+/*プロフィールビュー*/
+.user-image {
+    display: block;
+    margin: 15px auto;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.user-image-upload {
+    text-align: left!important;
+}
